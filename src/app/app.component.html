@@ -1,0 +1,29 @@
+<md-input-container>
+  <input mdInput placeholder="借入金額(万円)" [(ngModel)]="borrowings">
+</md-input-container>
+<md-input-container>
+  <input mdInput placeholder="返済金利(%)" [(ngModel)]="rate_per_annum">
+</md-input-container>
+<md-input-container>
+  <input mdInput placeholder="返済期間(年)" [(ngModel)]="number_of_scheduled_payments">
+</md-input-container>
+<md-input-container>
+  <input type="month" mdInput placeholder="借入年月" [(ngModel)]="month">
+</md-input-container>
+<!--
+{{ repay() }} | {{ repay() - interest(borrowings*10000, rate_per_annum) }} | {{ interest(borrowings*10000, rate_per_annum) }}
+<br>-->
+<button md-button (click)=hoge()>計算</button><br>
+<md-list>
+  <app-item-head></app-item-head>
+</md-list>
+<md-list *ngFor="let item of items; let i = index">
+  <app-item
+    [i] = i
+    [month] = month
+    [borrowings] = item.borrowings
+    [principal] = item.principal
+    [repayments] = item.repayments
+    [interest] = item.interest
+  ></app-item>
+</md-list>
